@@ -1,16 +1,21 @@
 Ion-header {
-  Ion-toolbar {
-    --background: #1c1c1c;
+  Ion-toolbar{
+    --background: #223A26;
+  }
+  Ion-title {
+    font-size: 20px;
   }
 }
-
+Ion-label {
+  margin: 10px;
+}
 Ion-content {
   --background: #1c1c1c;
-
   Ion-grid {
     display: grid;
     gap: 10px;
     padding: 20px;
+    --background: #FFFF;
   }
 }
 

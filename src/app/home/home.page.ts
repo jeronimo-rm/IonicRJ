@@ -19,11 +19,13 @@ import { Router } from '@angular/router';
   template: `
     <ion-header>
       <ion-toolbar>
-        <ion-title>Home</ion-title>
+        <img src="/assets/img/foto-foot.png" alt="foot">
+        <ion-title>FuteNews</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
+      <ion-label>Latest News</ion-label>
       <!-- <ion-grid>
         <app-button
           [buttonTitle]="'Test'"
@@ -76,7 +78,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   objectTest = [
-    { id: 0, value: 'test', page: 'test' },
+    { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
     { id: 1, value: 'test 1', page: 'test' },
   ];
 
@@ -88,8 +90,8 @@ export class HomePage {
     return this.router.navigateByUrl(page);
   }
 
-  test(event: boolean) {
-    console.log(`test ${event}`);
+  expensive(event: boolean) {
+    console.log(`expensive ${event}`);
   }
 
   test1(event: boolean) {
