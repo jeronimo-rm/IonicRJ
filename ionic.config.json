@@ -1,0 +1,7 @@
+{
+  "name": "FutebolNews",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
