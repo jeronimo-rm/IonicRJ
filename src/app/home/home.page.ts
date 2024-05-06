@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -12,6 +12,7 @@ import {
 } from '@ionic/angular/standalone';
 import { ButtonComponent } from '../components/button/button.component';
 import { Router } from '@angular/router';
+import { PlayersService } from '../services/players.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ import { Router } from '@angular/router';
   template: `
     <ion-header>
       <ion-toolbar>
-        <img src="/assets/img/foto-foot.png" alt="foot">
+        <img src="/assets/img/foto-foot.png" alt="foot" />
         <ion-title>FuteNews</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -52,9 +53,9 @@ import { Router } from '@angular/router';
       </ion-grid> -->
 
       <ion-list>
-        @for (item of objectTest; track item.id) {
-        <ion-item button (click)="goTo(item.page)">
-          <ion-label> {{ item.value }}</ion-label>
+        @for (item of listChampionsShip(); track item.id) {
+        <ion-item button (click)="goToChampionShip(item.campeonato_id)">
+          <ion-label>{{ item.nome_popular }}</ion-label>
         </ion-item>
         }
       </ion-list>
@@ -76,25 +77,43 @@ import { Router } from '@angular/router';
     IonGrid,
   ],
 })
-export class HomePage {
-  objectTest = [
-    { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
-    { id: 1, value: 'test 1', page: 'test' },
-  ];
+export class HomePage implements OnInit {
+  // objectTest = [
+  //   { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
+  //   { id: 1, value: 'test 1', page: 'test' },
+  // ];
 
+  listChampionsShip = signal<any | undefined>(undefined);
   router = inject(Router);
-
+  playersService = inject(PlayersService);
   constructor() {}
 
-  goTo(page: string) {
-    return this.router.navigateByUrl(page);
+  ngOnInit(): void {
+    this.getListChampionsShip();
   }
 
-  expensive(event: boolean) {
-    console.log(`expensive ${event}`);
+  async getListChampionsShip() {
+    try {
+      const listChampionsShip = await this.playersService.listChampionsShip();
+      this.listChampionsShip.set(listChampionsShip);
+    } catch (error) {
+      console.log(`MSA 🔊 error:`, error);
+    }
   }
 
-  test1(event: boolean) {
-    console.log(`test 1 ${event}`);
+  // goTo(page: string) {
+  //   return this.router.navigateByUrl(page);
+  // }
+
+  goToChampionShip(championShipId: number) {
+    return this.router.navigateByUrl(`expensive/${championShipId}`);
   }
+
+  // expensive(event: boolean) {
+  //   console.log(`expensive ${event}`);
+  // }
+
+  // test1(event: boolean) {
+  //   console.log(`test 1 ${event}`);
+  // }
 }

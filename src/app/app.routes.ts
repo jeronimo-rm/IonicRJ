@@ -11,7 +11,13 @@ export const routes: Routes = [
   },
   {
     path: 'expensive',
-    loadComponent: () => import('./test/expensive').then((m) => m.ExpensivePage),
+    loadComponent: () =>
+      import('./test/expensive').then((m) => m.ExpensivePage),
+  },
+  {
+    path: 'expensive/:id',
+    loadComponent: () =>
+      import('./test/expensive').then((m) => m.ExpensivePage),
   },
   {
     path: '',
