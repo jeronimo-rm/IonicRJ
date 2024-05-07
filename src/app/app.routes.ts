@@ -6,7 +6,7 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
-    path: 'test',
+    path: 'test/:id',
     loadComponent: () => import('./test/test').then((m) => m.TestPage),
   },
   {
@@ -15,9 +15,9 @@ export const routes: Routes = [
       import('./test/expensive').then((m) => m.ExpensivePage),
   },
   {
-    path: 'expensive/:id',
+    path: 'pokemon',
     loadComponent: () =>
-      import('./test/expensive').then((m) => m.ExpensivePage),
+      import('./pages/pokemon/pokemon.page').then((m) => m.PokemonPage),
   },
   {
     path: '',

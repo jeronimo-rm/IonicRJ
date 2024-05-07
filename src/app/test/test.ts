@@ -31,14 +31,24 @@ import { ActivatedRoute } from '@angular/router';
         <ion-card-header>
           <ion-img [src]="championShip()?.logo" />
         </ion-card-header>
-      </ion-card></ion-content>
+      </ion-card>
+    </ion-content>
   `,
   styles: [``],
-  imports: [IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent, IonCard, IonCardHeader, IonImg],
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonBackButton,
+    IonContent,
+    IonCard,
+    IonCardHeader,
+    IonImg,
+  ],
 })
 export class TestPage implements OnInit {
   constructor() {}
-
 
   championShipID = input.required<number>({ alias: 'id' });
   championShip = signal<ChampionShip | undefined>(undefined);
@@ -46,7 +56,6 @@ export class TestPage implements OnInit {
 
   playersService = inject(PlayersService);
   activeRoute = inject(ActivatedRoute);
-
 
   async getPlayer(playerID: number) {
     try {
@@ -74,4 +83,3 @@ export class TestPage implements OnInit {
     }
   }
 }
-

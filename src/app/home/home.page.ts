@@ -59,6 +59,14 @@ import { PlayersService } from '../services/players.service';
         </ion-item>
         }
       </ion-list>
+
+      <ion-list>
+        @for (item of objectTest; track item.id) {
+        <ion-item button (click)="goTo(item.page)">
+          <ion-label>{{ item.value }}</ion-label>
+        </ion-item>
+        }
+      </ion-list>
     </ion-content>
   `,
   styleUrls: ['home.page.scss'],
@@ -78,10 +86,11 @@ import { PlayersService } from '../services/players.service';
   ],
 })
 export class HomePage implements OnInit {
-   objectTest = [
+  objectTest = [
     { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
-     { id: 1, value: 'test 1', page: 'test' },
-   ];
+    { id: 1, value: 'Pokemons', page: 'pokemon' },
+    // { id: 2, value: 'test 2', page: 'test' },
+  ];
 
   listChampionsShip = signal<any | undefined>(undefined);
   router = inject(Router);
@@ -101,19 +110,11 @@ export class HomePage implements OnInit {
     }
   }
 
-  // goTo(page: string) {
-  //   return this.router.navigateByUrl(page);
-  // }
-
-  goToChampionShip(championShipId: number) {
-    return this.router.navigateByUrl(`expensive/${championShipId}`);
+  goTo(page: string) {
+    return this.router.navigateByUrl(page);
   }
 
-  // expensive(event: boolean) {
-  //   console.log(`expensive ${event}`);
-  // }
-
-  // test1(event: boolean) {
-  //   console.log(`test 1 ${event}`);
-  // }
+  goToChampionShip(championShipId: number) {
+    return this.router.navigateByUrl(`test/${championShipId}`);
+  }
 }
