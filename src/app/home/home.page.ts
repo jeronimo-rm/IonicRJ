@@ -78,10 +78,10 @@ import { PlayersService } from '../services/players.service';
   ],
 })
 export class HomePage implements OnInit {
-  // objectTest = [
-  //   { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
-  //   { id: 1, value: 'test 1', page: 'test' },
-  // ];
+   objectTest = [
+    { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
+     { id: 1, value: 'test 1', page: 'test' },
+   ];
 
   listChampionsShip = signal<any | undefined>(undefined);
   router = inject(Router);
