@@ -48,7 +48,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   // }
 
   Ion-item > Ion-label {
-    --color: var(--ion-color-test);
   }
   `,
   standalone: true,

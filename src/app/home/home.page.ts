@@ -9,6 +9,7 @@ import {
   IonInput,
   IonList,
   IonGrid,
+  IonText,
 } from '@ionic/angular/standalone';
 import { ButtonComponent } from '../components/button/button.component';
 import { Router } from '@angular/router';
@@ -21,12 +22,14 @@ import { PlayersService } from '../services/players.service';
     <ion-header>
       <ion-toolbar>
         <img src="/assets/img/foto-foot.png" alt="foot" />
-        <ion-title>FuteNews</ion-title>
+        <ion-title class="ion-text-center">Game News</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <ion-label>Latest News</ion-label>
+      <ion-grid class="padon-text">
+      <ion-text>Latest News</ion-text>
+      </ion-grid>
       <!-- <ion-grid>
         <app-button
           [buttonTitle]="'Test'"
@@ -83,6 +86,7 @@ import { PlayersService } from '../services/players.service';
     ButtonComponent,
     IonToolbar,
     IonGrid,
+    IonText,
   ],
 })
 export class HomePage implements OnInit {
