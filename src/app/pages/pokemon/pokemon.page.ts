@@ -12,13 +12,12 @@ import {
   IonButtons,
   IonBackButton,
 } from '@ionic/angular/standalone';
-import { PokemonList } from 'src/app/interfaces/pokemon';
+import { Pokemon, PokemonList } from 'src/app/interfaces/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',
-  // templateUrl: './pokemon.page.html',
-  // styleUrls: ['./pokemon.page.scss'],
   template: `
     <ion-header>
       <ion-toolbar>
@@ -32,7 +31,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
     <ion-content>
       <ion-list>
         @for (item of pokemonList(); track item.name) {
-        <ion-item>
+        <ion-item (click)="goToDetails(item)">
           <ion-label class="ion-text-center">
             {{ item.name | titlecase }}
           </ion-label>
@@ -69,6 +68,9 @@ export class PokemonPage implements OnInit {
   list = signal<PokemonList>([]);
   pokemonList = signal<PokemonList>([]);
   private pokemonService = inject(PokemonService);
+
+  private router = inject(Router);
+
   ngOnInit() {
     this.getPokemonList();
   }
@@ -84,5 +86,17 @@ export class PokemonPage implements OnInit {
     } catch (error) {
       console.log('error', error);
     }
+  }
+
+  goToDetails(pokemon: Pokemon) {
+    /**
+     * Exemplo de como enviar um objeto
+     * para uma outra pagina
+     */
+    const navigationExtra: NavigationExtras = {
+      state: pokemon,
+    };
+
+    return this.router.navigateByUrl(`/pokedetails`, navigationExtra);
   }
 }
