@@ -22,7 +22,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 // Metodo para adicionar icons em componentes standalone
 // Url dos icons do ionic https://ionic.io/ionicons?_gl=1*1207esh*_ga*MzE4MjkzODA1LjE2NDk0MTg3ODE.*_ga_REH9TJF6KF*MTY0OTQxODc4MC4xLjAuMTY0OTQxODc4MC4w
 import { addIcons } from 'ionicons';
-import { airplaneOutline, alarmOutline, airplane } from 'ionicons/icons';
+import { flame, water, leaf, bug, logoFirefox, aperture, } from 'ionicons/icons';
 
 @Component({
   selector: 'app-pokedetails',
@@ -47,14 +47,19 @@ import { airplaneOutline, alarmOutline, airplane } from 'ionicons/icons';
             {{ pokemon()?.name | titlecase }}
           </ion-label>
         </ion-row>
-
-        <ion-icon name="airplane-outline" color="primary" />
-        <ion-icon name="alarm-outline" />
-        <ion-icon name="airplane" class="icon--test" />
+        <ion-row class="fnt-sz">
+        <ion-icon class="icn1" name="flame"></ion-icon>
+        <ion-icon class="icn2" name="water"></ion-icon>
+        <ion-icon class="icn3" name="leaf"></ion-icon>
+        <ion-icon class="icn4" name="bug"></ion-icon>
+        <ion-icon class="icn5" name="logo-firefox"></ion-icon>
+        <ion-icon class="icn6" name="aperture"></ion-icon>
+        </ion-row>
       </ion-grid>
     </ion-content>
   `,
   styles: `
+  @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 
   Ion-grid {
     display:grid;
@@ -70,17 +75,37 @@ import { airplaneOutline, alarmOutline, airplane } from 'ionicons/icons';
     .pokename{
       font-size: 60px;
       text-align: center;
-      font-weight: bolder;
+      font-family: 'Pokemon Solid', sans-serif;
+      color: yellow;
+    text-shadow:
+        -2px -2px 0 blue,
+        2px -2px 0 blue,
+        -2px  2px 0 blue,
+        2px  2px 0 blue;
     }
-
-    Ion-icon {
-      color: var(--ion-color-danger);
-      font-size: 44px;
+    .fnt-sz{
+      font-size: 30px;
     }
-
-    .icon--test {
-      color: green;
-      font-size:70px;
+    .icn1 {
+      color: #e28743;
+    }
+    .icn2 {
+      color: #42A5F5;
+    }
+    .icn3 {
+      color: #388E3C;
+    }
+    .icn4 {
+      color: #D4E157;
+    }
+    .icn5 {
+      color: #ECEFF1;
+    }
+    .icn6 {
+      color: #9E9E9E;
+    }
+    ion-content{
+      --background: url('/assets/img/poke-img.png') 18% center / cover no-repeat;
     }
 
   `,
@@ -113,9 +138,12 @@ export class PokedetailsPage implements OnInit {
     // Necessário para se
     // conseguir ver os icons nos componentes standalone
     addIcons({
-      airplaneOutline,
-      alarmOutline,
-      airplane,
+      flame,
+      water,
+      leaf,
+      bug,
+      logoFirefox,
+      aperture,
     });
 
     /**
