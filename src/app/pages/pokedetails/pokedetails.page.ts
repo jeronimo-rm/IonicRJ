@@ -13,6 +13,7 @@ import {
   IonRow,
   IonGrid,
   IonIcon,
+  IonSearchbar,
 } from '@ionic/angular/standalone';
 import { Details, Pokemon } from 'src/app/interfaces/pokemon';
 import { Router } from '@angular/router';
@@ -99,6 +100,7 @@ import { airplaneOutline, alarmOutline, airplane } from 'ionicons/icons';
     IonRow,
     IonGrid,
     IonIcon,
+    IonSearchbar,
   ],
 })
 export class PokedetailsPage implements OnInit {

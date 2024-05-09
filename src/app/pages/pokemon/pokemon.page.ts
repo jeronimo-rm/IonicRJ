@@ -1,4 +1,11 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -25,8 +32,27 @@ import { NavigationExtras, Router } from '@angular/router';
         <ion-buttons slot="start">
           <ion-back-button />
         </ion-buttons>
-        <ion-title>Pokemon</ion-title>
+        <img
+          src="assets/img/Pokemon-Logo.png"
+          alt="Pokemon"
+          style="width: 120px; display: block; margin: 0 auto;"
+        />
       </ion-toolbar>
+
+      <!-- Metodo 1 para passar valor do search bar para a função search -->
+      <!-- <ion-searchbar
+        #searchBar
+        animated="true"
+        placeholder="search"
+        (ionInput)="search(searchBar.value)"
+      /> -->
+
+      <!-- metodo 2 utilizando viewchield -->
+      <ion-searchbar
+        animated="true"
+        placeholder="search"
+        (ionInput)="search2()"
+      />
     </ion-header>
 
     <ion-content>
@@ -67,6 +93,13 @@ import { NavigationExtras, Router } from '@angular/router';
   ],
 })
 export class PokemonPage implements OnInit {
+  // Syntax antiga do angular
+  @ViewChild(IonSearchbar, { static: false }) searchBar:
+    | IonSearchbar
+    | undefined;
+  // Nova Syntax
+  //  searchBar = viewChild(IonSearchbar);
+
   list = signal<PokemonList>([]);
   pokemonList = signal<PokemonList>([]);
   private pokemonService = inject(PokemonService);
@@ -102,7 +135,25 @@ export class PokemonPage implements OnInit {
     return this.router.navigateByUrl(`/pokedetails`, navigationExtra);
   }
 
-  search(text: any) {
-    console.log('text', text);
+  search(text: string | null | undefined) {
+    if (!text) {
+      return this.pokemonList.set(this.list());
+    } else {
+      return this.pokemonList.update((items) => [
+        ...items.filter((item) => item.name.includes(text)),
+      ]);
+    }
+  }
+
+  search2() {
+    const text = this.searchBar?.value;
+
+    if (!text) {
+      return this.pokemonList.set(this.list());
+    } else {
+      return this.pokemonList.update((items) => [
+        ...items.filter((item) => item.name.includes(text)),
+      ]);
+    }
   }
 }
