@@ -11,6 +11,7 @@ import {
   IonItem,
   IonButtons,
   IonBackButton,
+  IonSearchbar,
 } from '@ionic/angular/standalone';
 import { Pokemon, PokemonList } from 'src/app/interfaces/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -62,6 +63,7 @@ import { NavigationExtras, Router } from '@angular/router';
     IonItem,
     IonButtons,
     IonBackButton,
+    IonSearchbar,
   ],
 })
 export class PokemonPage implements OnInit {
@@ -98,5 +100,9 @@ export class PokemonPage implements OnInit {
     };
 
     return this.router.navigateByUrl(`/pokedetails`, navigationExtra);
+  }
+
+  search(text: any) {
+    console.log('text', text);
   }
 }

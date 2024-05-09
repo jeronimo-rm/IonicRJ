@@ -10,10 +10,18 @@ import {
   IonButtons,
   IonBackButton,
   IonLabel,
+  IonRow,
+  IonGrid,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { Details, Pokemon } from 'src/app/interfaces/pokemon';
 import { Router } from '@angular/router';
 import { PokemonService } from 'src/app/services/pokemon.service';
+
+// Metodo para adicionar icons em componentes standalone
+// Url dos icons do ionic https://ionic.io/ionicons?_gl=1*1207esh*_ga*MzE4MjkzODA1LjE2NDk0MTg3ODE.*_ga_REH9TJF6KF*MTY0OTQxODc4MC4xLjAuMTY0OTQxODc4MC4w
+import { addIcons } from 'ionicons';
+import { airplaneOutline, alarmOutline, airplane } from 'ionicons/icons';
 
 @Component({
   selector: 'app-pokedetails',
@@ -28,17 +36,51 @@ import { PokemonService } from 'src/app/services/pokemon.service';
     </ion-header>
 
     <ion-content>
-      <ion-img [src]="pokemonDetail()?.sprites?.other?.dream_world?.front_default"/>
-      <ion-label class="pokename" >{{pokemon()?.name | titlecase }}</ion-label>
+      <ion-grid>
+        <ion-img
+          [src]="pokemonDetail()?.sprites?.other?.dream_world?.front_default"
+        />
+
+        <ion-row>
+          <ion-label class="pokename">
+            {{ pokemon()?.name | titlecase }}
+          </ion-label>
+        </ion-row>
+
+        <ion-icon name="airplane-outline" color="primary" />
+        <ion-icon name="alarm-outline" />
+        <ion-icon name="airplane" class="icon--test" />
+      </ion-grid>
     </ion-content>
   `,
   styles: `
+
+  Ion-grid {
+    display:grid;
+    gap:10;
+    padding-left: 24px;
+    padding-right:24px;
+  }
+
+    Ion-row {
+      display: flex;
+      justify-content:center;
+    }
     .pokename{
       font-size: 60px;
       text-align: center;
       font-weight: bolder;
     }
 
+    Ion-icon {
+      color: var(--ion-color-danger);
+      font-size: 44px;
+    }
+
+    .icon--test {
+      color: green;
+      font-size:70px;
+    }
 
   `,
   standalone: true,
@@ -54,6 +96,9 @@ import { PokemonService } from 'src/app/services/pokemon.service';
     FormsModule,
     TitleCasePipe,
     IonLabel,
+    IonRow,
+    IonGrid,
+    IonIcon,
   ],
 })
 export class PokedetailsPage implements OnInit {
@@ -63,6 +108,14 @@ export class PokedetailsPage implements OnInit {
   private router = inject(Router);
   private pokemonService = inject(PokemonService);
   constructor() {
+    // Necessário para se
+    // conseguir ver os icons nos componentes standalone
+    addIcons({
+      airplaneOutline,
+      alarmOutline,
+      airplane,
+    });
+
     /**
      * Como receber informação enviada de uma outra pagina
      * [exemplo de envio na pagina pokemon.page.ts]
