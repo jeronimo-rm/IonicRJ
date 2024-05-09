@@ -49,5 +49,17 @@ Ion-content {
   top: 2%;
   left: 20%;
 }
-#padon-text{
+.mdtext{
+  text-align: center;
+}
+
+Ion-title.ion-align-items-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+Ion-content Ion-grid {
+  padding: 5px;
 }

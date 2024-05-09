@@ -10,9 +10,12 @@ import {
   IonList,
   IonGrid,
   IonText,
+  IonRefresher,
+  IonRefresherContent,
 } from '@ionic/angular/standalone';
 import { ButtonComponent } from '../components/button/button.component';
 import { Router } from '@angular/router';
+import { RefresherEventDetail } from '@ionic/core';
 import { PlayersService } from '../services/players.service';
 
 @Component({
@@ -22,13 +25,13 @@ import { PlayersService } from '../services/players.service';
     <ion-header>
       <ion-toolbar>
         <img src="/assets/img/foto-foot.png" alt="foot" />
-        <ion-title class="ion-text-center">Game News</ion-title>
+        <ion-title class="ion-text-center ion-align-items-center">Game News</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <ion-grid class="padon-text">
-      <ion-text>Latest News</ion-text>
+      <ion-grid>
+      <ion-text class="mdtext">Latest News</ion-text>
       </ion-grid>
       <!-- <ion-grid>
         <app-button
@@ -87,6 +90,8 @@ import { PlayersService } from '../services/players.service';
     IonToolbar,
     IonGrid,
     IonText,
+    IonRefresher,
+    IonRefresherContent,
   ],
 })
 export class HomePage implements OnInit {
@@ -121,4 +126,5 @@ export class HomePage implements OnInit {
   goToChampionShip(championShipId: number) {
     return this.router.navigateByUrl(`test/${championShipId}`);
   }
+
 }

@@ -9,6 +9,7 @@ import {
   IonImg,
   IonButtons,
   IonBackButton,
+  IonLabel,
 } from '@ionic/angular/standalone';
 import { Details, Pokemon } from 'src/app/interfaces/pokemon';
 import { Router } from '@angular/router';
@@ -27,12 +28,19 @@ import { PokemonService } from 'src/app/services/pokemon.service';
     </ion-header>
 
     <ion-content>
-      <ion-img
-        [src]="pokemonDetail()?.sprites?.other?.dream_world?.front_default"
-      />
+      <ion-img [src]="pokemonDetail()?.sprites?.other?.dream_world?.front_default"/>
+      <ion-label class="pokename" >{{pokemon()?.name | titlecase }}</ion-label>
     </ion-content>
   `,
-  styles: ``,
+  styles: `
+    .pokename{
+      font-size: 60px;
+      text-align: center;
+      font-weight: bolder;
+    }
+
+
+  `,
   standalone: true,
   imports: [
     IonContent,
@@ -45,6 +53,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
     CommonModule,
     FormsModule,
     TitleCasePipe,
+    IonLabel,
   ],
 })
 export class PokedetailsPage implements OnInit {
