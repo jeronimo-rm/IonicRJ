@@ -22,6 +22,7 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  IonImg,
 } from '@ionic/angular/standalone';
 import { Pokemon, PokemonList } from 'src/app/interfaces/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -35,20 +36,14 @@ import { Location } from '@angular/common';
   template: `
     <ion-header>
       <ion-toolbar>
-        <!--<ion-buttons slot="start">
+        <ion-buttons slot="start">
           <ion-back-button />
-        </ion-buttons> -->
-        <ion-fab vertical="bottom" horizontal="start">
-          <ion-fab-button (click)="goBack()">
-            <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-
-        <img
+        </ion-buttons>
+        <!-- <img
           src="assets/img/pokemon-logo.png"
           alt="Pokemon"
           style="width: 160px; display: block; margin: 0 auto;"
-        />
+        /> -->
       </ion-toolbar>
 
       <!-- Metodo 1 para passar valor do search bar para a função search -->
@@ -69,6 +64,13 @@ import { Location } from '@angular/common';
     </ion-header>
 
     <ion-content>
+      <ion-img [src]="pokemonLogo" />
+      <ion-fab vertical="bottom" horizontal="start">
+        <ion-fab-button (click)="goBack()">
+          <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
       <ion-list>
         @for (item of pokemonList(); track item.name) {
         <ion-item (click)="goToDetails(item)">
@@ -105,6 +107,7 @@ import { Location } from '@angular/common';
     IonIcon,
     IonFab,
     IonFabButton,
+    IonImg,
   ],
 })
 export class PokemonPage implements OnInit {
@@ -118,6 +121,8 @@ export class PokemonPage implements OnInit {
 
   list = signal<PokemonList>([]);
   pokemonList = signal<PokemonList>([]);
+
+  pokemonLogo = '../../../assets/img/pokemon-logo.png';
 
   private pokemonService = inject(PokemonService);
   private router = inject(Router);
@@ -167,7 +172,7 @@ export class PokemonPage implements OnInit {
       return this.pokemonList.set(this.list());
     } else {
       return this.pokemonList.update((items) => [
-        ...items.filter((item) => item.name.includes(text)),
+        ...items.filter((item) => item.name.includes(text ? text : '')),
       ]);
     }
   }
@@ -178,6 +183,6 @@ export class PokemonPage implements OnInit {
   }
 
   goBack() {
-    this.location.back();
+    return this.router.navigateByUrl('/home');
   }
 }
