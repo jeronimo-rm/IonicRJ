@@ -39,10 +39,11 @@ import { Location } from '@angular/common';
           <ion-back-button />
         </ion-buttons> -->
         <ion-fab vertical="bottom" horizontal="start">
-  <ion-fab-button (click)="goBack()">
-    <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+          <ion-fab-button (click)="goBack()">
+            <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+
         <img
           src="assets/img/pokemon-logo.png"
           alt="Pokemon"

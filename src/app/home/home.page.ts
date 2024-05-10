@@ -20,7 +20,6 @@ import { PlayersService } from '../services/players.service';
 
 @Component({
   selector: 'app-home',
-  // templateUrl: 'home.page.html',
   template: `
     <ion-header>
       <ion-toolbar>
@@ -98,7 +97,6 @@ export class HomePage implements OnInit {
   objectTest = [
     { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
     { id: 1, value: 'Pokemons', page: 'pokemon' },
-    // { id: 2, value: 'test 2', page: 'test' },
   ];
 
   listChampionsShip = signal<any | undefined>(undefined);
