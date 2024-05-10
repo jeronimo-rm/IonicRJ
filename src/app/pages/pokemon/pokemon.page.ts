@@ -49,6 +49,7 @@ import { NavigationExtras, Router } from '@angular/router';
 
       <!-- metodo 2 utilizando viewchield -->
       <ion-searchbar
+        #searchBar
         animated="true"
         placeholder="search"
         (ionInput)="search2()"
@@ -94,16 +95,17 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class PokemonPage implements OnInit {
   // Syntax antiga do angular
-  @ViewChild(IonSearchbar, { static: false }) searchBar:
-    | IonSearchbar
-    | undefined;
+  // @ViewChild(IonSearchbar, { static: false }) searchBar:
+  //   | IonSearchbar
+  //   | undefined;
+
   // Nova Syntax
-  //  searchBar = viewChild(IonSearchbar);
+  searchBar = viewChild<IonSearchbar>(IonSearchbar);
 
   list = signal<PokemonList>([]);
   pokemonList = signal<PokemonList>([]);
-  private pokemonService = inject(PokemonService);
 
+  private pokemonService = inject(PokemonService);
   private router = inject(Router);
 
   ngOnInit() {
@@ -146,9 +148,8 @@ export class PokemonPage implements OnInit {
   }
 
   search2() {
-    const text = this.searchBar?.value;
-
-    if (!text) {
+    const text = this.searchBar()?.value;
+    if (text) {
       return this.pokemonList.set(this.list());
     } else {
       return this.pokemonList.update((items) => [
