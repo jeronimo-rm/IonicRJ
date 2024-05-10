@@ -65,11 +65,10 @@ import { Location } from '@angular/common';
 
     <ion-content>
       <ion-fab vertical="bottom" horizontal="start">
-        <ion-fab-button (click)="goBack()">
-          <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
+        <ion-fab-button color="tertiary" (click)="goBack()">
+          <ion-icon name="chevron-back-outline" color="white" />
         </ion-fab-button>
       </ion-fab>
-
       <ion-list>
         @for (item of pokemonList(); track item.name) {
         <ion-item (click)="goToDetails(item)">
@@ -86,6 +85,10 @@ import { Location } from '@angular/common';
       ion-toolbar {
         --background: url('/assets/img/poke-img.png') no-repeat center center fixed;
         background-size: cover;
+      }
+
+      ion-fab > ion-fab-button > ion-icon {
+        --color: var(--ion-color-danger) !important;
       }
 
   `,
@@ -125,6 +128,12 @@ export class PokemonPage implements OnInit {
 
   private pokemonService = inject(PokemonService);
   private router = inject(Router);
+
+  constructor(private location: Location) {
+    addIcons({
+      chevronBackOutline,
+    });
+  }
 
   ngOnInit() {
     this.getPokemonList();
@@ -174,11 +183,6 @@ export class PokemonPage implements OnInit {
         ...items.filter((item) => item.name.includes(text ? text : '')),
       ]);
     }
-  }
-  constructor(private location: Location) {
-    addIcons({
-      chevronBackOutline,
-    });
   }
 
   goBack() {
