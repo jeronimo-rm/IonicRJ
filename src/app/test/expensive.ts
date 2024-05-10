@@ -16,8 +16,11 @@ import {
   IonLabel,
   IonList,
   IonImg,
+
 } from '@ionic/angular/standalone';
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-expensive',
@@ -38,7 +41,7 @@ import { Component, OnInit } from '@angular/core';
         <ion-row>
           <ion-col size="12" size-md="6" size-lg="4">
             <ion-card>
-              <img [src]="topic.imageUrl" alt="Imagem Jogadores" />
+              <img [src]="topic.imageUrl" alt="Imagem Jogadores" (click)="presentAlert(topic)" />
               <ion-card-header>
                 <ion-card-title>{{ topic.title }} <img style="width: 25px;" [src]="topic.icnflag" alt="Imagem Jogadores" /></ion-card-title>
 
@@ -56,8 +59,11 @@ import { Component, OnInit } from '@angular/core';
 
     </ion-content>
   `,
-  styles: [
+  styles:
     `
+      ion-content{
+        --background: #222222;
+      }
       ion-card-content {
         display: flex;
         align-items: center;
@@ -69,7 +75,7 @@ import { Component, OnInit } from '@angular/core';
         margin-right: 20px;
       }
     `,
-  ],
+
   imports: [
     IonHeader,
     IonToolbar,
@@ -99,6 +105,7 @@ export class ExpensivePage implements OnInit {
       marketvalue: '110,00 M €',
       description: 'Rodrigo Hernández Cascante é jogador do Manchester City  27(22/06/1996) Médio Defensivo' ,
       icnflag:'assets/icon/spain.png',
+      imgpopup: 'assets/img/kane-8.png',
     },
     {
       id: 2,
@@ -171,12 +178,30 @@ export class ExpensivePage implements OnInit {
       marketvalue: '185,00 M €',
       description: 'Jude Victor William Bellingham é jogador do Real Madrid 20(29/06/2003) Médio Ofensivo',
       icnflag:'assets/icon/england.png',
+      imgpopup: 'assets/img/kane-8.png',
     },
   ];
 
   ngOnInit() {
     console.log('ExpensivePage');
   }
-  constructor() {}
+  constructor(private alertController: AlertController, private sanitizer: DomSanitizer) {}
+
+  async presentAlert(topic: any) {
+    const imageUrl = this.sanitizeUrl(topic.imageUrl || 'imgpopup.png');
+    const message = `<img src="${imageUrl}" alt="Player Image" style="max-width: 100%;">`;
+
+    const alert = await this.alertController.create({
+      message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  sanitizeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
 
 }

@@ -19,23 +19,35 @@ import {
   IonButtons,
   IonBackButton,
   IonSearchbar,
+  IonFab,
+  IonFabButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { Pokemon, PokemonList } from 'src/app/interfaces/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { chevronBackOutline } from 'ionicons/icons';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon',
   template: `
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start">
+        <!--<ion-buttons slot="start">
           <ion-back-button />
-        </ion-buttons>
+        </ion-buttons> -->
+        <ion-fab vertical="bottom" horizontal="start">
+          <ion-fab-button (click)="goBack()">
+            <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+
         <img
-          src="assets/img/Pokemon-Logo.png"
+          src="assets/img/pokemon-logo.png"
           alt="Pokemon"
-          style="width: 120px; display: block; margin: 0 auto;"
+          style="width: 160px; display: block; margin: 0 auto;"
         />
       </ion-toolbar>
 
@@ -70,12 +82,11 @@ import { NavigationExtras, Router } from '@angular/router';
   `,
   styles: `
 
-  // Ion-item {
-  //   --background: var(--ion-color-test-contrast)
-  // }
+      ion-toolbar {
+        --background: url('/assets/img/poke-img.png') no-repeat center center fixed;
+        background-size: cover;
+      }
 
-  Ion-item > Ion-label {
-  }
   `,
   standalone: true,
   imports: [
@@ -91,6 +102,9 @@ import { NavigationExtras, Router } from '@angular/router';
     IonButtons,
     IonBackButton,
     IonSearchbar,
+    IonIcon,
+    IonFab,
+    IonFabButton,
   ],
 })
 export class PokemonPage implements OnInit {
@@ -156,5 +170,14 @@ export class PokemonPage implements OnInit {
         ...items.filter((item) => item.name.includes(text)),
       ]);
     }
+  }
+  constructor(private location: Location) {
+    addIcons({
+      chevronBackOutline,
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
