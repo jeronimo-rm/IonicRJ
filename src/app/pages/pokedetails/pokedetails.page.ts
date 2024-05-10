@@ -22,7 +22,15 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 // Metodo para adicionar icons em componentes standalone
 // Url dos icons do ionic https://ionic.io/ionicons?_gl=1*1207esh*_ga*MzE4MjkzODA1LjE2NDk0MTg3ODE.*_ga_REH9TJF6KF*MTY0OTQxODc4MC4xLjAuMTY0OTQxODc4MC4w
 import { addIcons } from 'ionicons';
-import { flame, water, leaf, bug, logoFirefox, aperture } from 'ionicons/icons';
+import {
+  flame,
+  water,
+  leaf,
+  bug,
+  logoFirefox,
+  aperture,
+  skull,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-pokedetails',
@@ -55,22 +63,28 @@ import { flame, water, leaf, bug, logoFirefox, aperture } from 'ionicons/icons';
           @switch (item.type.name) { @case ('flame') {
           <ion-icon class="icn1" name="flame" />
           } @case ('water') {
-          <ion-icon class="icn1" name="water" />
-          } @case ('leaf') {
-          <ion-icon class="icn1" name="leaf" />
+          <ion-icon class="icn2" name="water" />
+          } @case ('grass') {
+          <ion-icon class="icn3" name="leaf" />
           } @case ('bug') {
-          <ion-icon class="icn1" name="bug" />
-          } @case ('logo-firefox') {
-          <ion-icon class="icn1" name="logo-firefox" />
-          } @case ('aperture') {
-          <ion-icon class="icn1" name="aperture" />
-          } @default { } } }
+          <ion-icon class="icn4" name="bug" />
+          } @case ('flying') {
+          <ion-icon class="icn5" name="logo-firefox" />
+          } @case ('normal') {
+          <ion-icon class="icn6" name="aperture" />
+          }@case ('poison') {
+          <ion-icon class="icn7" name="skull" />
+          } @default { } }
+
           <!-- <ion-icon class="icn1" name="flame"></ion-icon>
           <ion-icon class="icn2" name="water"></ion-icon>
           <ion-icon class="icn3" name="leaf"></ion-icon>
           <ion-icon class="icn4" name="bug"></ion-icon>
           <ion-icon class="icn5" name="logo-firefox"></ion-icon>
-          <ion-icon class="icn6" name="aperture"></ion-icon> -->
+          <ion-icon class="icn6" name="aperture"></ion-icon>
+          <ion-icon class="icn7" name="skull"></ion-icon>-->
+
+          }
         </ion-row>
       </ion-grid>
     </ion-content>
@@ -121,6 +135,9 @@ import { flame, water, leaf, bug, logoFirefox, aperture } from 'ionicons/icons';
     .icn6 {
       color: #9E9E9E;
     }
+    .icn7 {
+      color: #8E24AA;
+    }
     ion-content{
       --background: url('/assets/img/poke-img.png') 18% center / cover no-repeat;
     }
@@ -161,6 +178,7 @@ export class PokedetailsPage implements OnInit {
       bug,
       logoFirefox,
       aperture,
+      skull,
     });
 
     /**
