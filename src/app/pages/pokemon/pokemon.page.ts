@@ -1,3 +1,4 @@
+import { Ability } from './../../interfaces/pokemon';
 import {
   Component,
   OnInit,
@@ -23,6 +24,7 @@ import {
   IonFabButton,
   IonIcon,
   IonImg,
+  IonFooter,
 } from '@ionic/angular/standalone';
 import { Pokemon, PokemonList } from 'src/app/interfaces/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -61,11 +63,6 @@ import { Location } from '@angular/common';
     </ion-header>
 
     <ion-content>
-      <ion-fab vertical="bottom" horizontal="start">
-        <ion-fab-button color="tertiary" (click)="goBack()">
-          <ion-icon name="chevron-back-outline" color="white" />
-        </ion-fab-button>
-      </ion-fab>
       <ion-list>
         @for (item of pokemonList(); track item.name) {
         <ion-item (click)="goToDetails(item)">
@@ -76,12 +73,28 @@ import { Location } from '@angular/common';
         }
       </ion-list>
     </ion-content>
+
+    <ion-footer>
+      <ion-fab vertical="bottom" horizontal="start">
+        <ion-fab-button color="tertiary" (click)="goBack()">
+          <ion-icon name="chevron-back-outline" color="white" />
+        </ion-fab-button>
+      </ion-fab>
+    </ion-footer>
   `,
   styles: `
 
       ion-toolbar {
         --background: url('/assets/img/poke-img.png') no-repeat center center fixed;
         background-size: cover;
+      }
+
+      ion-header {
+        background: #1F2224;
+      }
+
+      ion-item {
+        --background: #1F2224;
       }
 
       ion-fab > ion-fab-button > ion-icon {
@@ -107,6 +120,7 @@ import { Location } from '@angular/common';
     IonFab,
     IonFabButton,
     IonImg,
+    IonFooter,
   ],
 })
 export class PokemonPage implements OnInit {
@@ -165,20 +179,19 @@ export class PokemonPage implements OnInit {
     if (!text) {
       return this.pokemonList.set(this.list());
     } else {
-      return this.pokemonList.update((items) => [
-        ...items.filter((item) => item.name.includes(text)),
-      ]);
+      const list = this.list().filter((items) => items.name.includes(text));
+      return this.pokemonList.set(list);
     }
   }
 
   search2() {
     const text = this.searchBar()?.value;
-    if (text) {
+
+    if (!text) {
       return this.pokemonList.set(this.list());
     } else {
-      return this.pokemonList.update((items) => [
-        ...items.filter((item) => item.name.includes(text ? text : '')),
-      ]);
+      const list = this.list().filter((items) => items.name.includes(text));
+      return this.pokemonList.set(list);
     }
   }
 
