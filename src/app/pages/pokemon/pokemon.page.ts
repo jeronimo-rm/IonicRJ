@@ -39,11 +39,11 @@ import { Location } from '@angular/common';
         <ion-buttons slot="start">
           <ion-back-button />
         </ion-buttons>
-        <!-- <img
+        <img
           src="assets/img/pokemon-logo.png"
           alt="Pokemon"
           style="width: 160px; display: block; margin: 0 auto;"
-        /> -->
+        />
       </ion-toolbar>
 
       <!-- Metodo 1 para passar valor do search bar para a função search -->
@@ -64,7 +64,6 @@ import { Location } from '@angular/common';
     </ion-header>
 
     <ion-content>
-      <ion-img [src]="pokemonLogo" />
       <ion-fab vertical="bottom" horizontal="start">
         <ion-fab-button (click)="goBack()">
           <ion-icon slot="icon-only" name="chevron-down"></ion-icon>
