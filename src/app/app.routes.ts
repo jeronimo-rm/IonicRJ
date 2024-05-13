@@ -31,4 +31,16 @@ export const routes: Routes = [
         (m) => m.PokedetailsPage
       ),
   },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+  },
+  {
+    path: 'test-css',
+    loadComponent: () => import('./test-css/test-css.page').then( m => m.TestCssPage)
+  },
+
+
+
+
 ];

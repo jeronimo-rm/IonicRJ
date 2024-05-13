@@ -43,7 +43,6 @@ import { DomSanitizer } from '@angular/platform-browser';
               <img
                 [src]="topic.imageUrl"
                 alt="Imagem Jogadores"
-                (click)="presentAlert(topic)"
               />
               <ion-card-header>
                 <ion-card-title
@@ -116,7 +115,6 @@ export class ExpensivePage implements OnInit {
       description:
         'Rodrigo Hernández Cascante é jogador do Manchester City  27(22/06/1996) Médio Defensivo',
       icnflag: 'assets/icon/spain.png',
-      imgpopup: 'assets/img/kane-8.png',
     },
     {
       id: 2,
@@ -210,19 +208,6 @@ export class ExpensivePage implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
-  async presentAlert(topic: any) {
-    const imageUrl = this.sanitizeUrl(topic.imageUrl || 'imgpopup.png');
-    const message = `<img src="${imageUrl}" alt="Player Image" style="max-width: 100%;">`;
 
-    const alert = await this.alertController.create({
-      message,
-      buttons: ['OK'],
-    });
 
-    await alert.present();
-  }
-
-  sanitizeUrl(url: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
 }
