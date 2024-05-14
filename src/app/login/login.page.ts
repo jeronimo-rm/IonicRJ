@@ -247,7 +247,7 @@ import {
 })
 export class LoginPage {
 
-  emailRegEx = '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+  emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.pattern(this.emailRegEx)]),
