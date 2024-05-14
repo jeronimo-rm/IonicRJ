@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  inject
 } from '@angular/core';
 import {
   CommonModule
@@ -23,6 +24,9 @@ import {
   IonText,
   IonInput,
 } from '@ionic/angular/standalone';
+import {
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -46,8 +50,13 @@ import {
         </ion-item>
 
         @if(loginForm.controls.email.touched && loginForm.controls.email.invalid ) {
-            @if(true) {
+
+            @if(loginForm.controls.email.hasError('required')) {
               <ion-text class="error" color="salmon-pink"> {{ 'This field is required' }} </ion-text>
+            }
+
+            @if(loginForm.controls.email.hasError('pattern')) {
+              <ion-text class="error" color="salmon-pink"> {{ 'Email invalid' }} </ion-text>
             }
           }
 
@@ -61,7 +70,14 @@ import {
           />
         </ion-item>
 
-        <ion-button class="main-btn" type="submit" href="./home" [disabled]="loginForm.invalid" >
+        @if(loginForm.controls.password.touched && loginForm.controls.password.invalid ) {
+
+            @if(loginForm.controls.password.hasError('required')) {
+              <ion-text class="error" color="salmon-pink"> {{ 'This field is required' }} </ion-text>
+            }
+          }
+
+        <ion-button class="main-btn" type="submit" [disabled]="loginForm.invalid" >
           <a>
             <span></span>
             <span></span>
@@ -230,7 +246,7 @@ import {
     IonInput,
   ],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   emailRegEx = '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 
@@ -239,13 +255,9 @@ export class LoginPage implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log('t');
-  }
+  router = inject(Router)
 
   login() {
-    console.log('form', this.loginForm);
+    return this.router.navigateByUrl('./home');
   }
 }
