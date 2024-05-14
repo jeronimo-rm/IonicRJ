@@ -11,7 +11,6 @@ import {
   IonImg,
   IonAvatar,
   IonLabel,
-
 } from '@ionic/angular/standalone';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,16 +18,16 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-expensive',
   standalone: true,
   template: `
-<div class="ion-page">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>App</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <ion-button id="open-modal" expand="block">Open Card Modal</ion-button>
+    <div class="ion-page">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>App</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-button id="open-modal" expand="block">Open Card Modal</ion-button>
 
-    <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
+        <!-- <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
       <ng-template>
         <ion-header>
           <ion-toolbar>
@@ -79,10 +78,10 @@ import { Component, OnInit } from '@angular/core';
           </ion-list>
         </ion-content>
       </ng-template>
-    </ion-modal>
-  </ion-content>
-</div>
-`,
+    </ion-modal> -->
+      </ion-content>
+    </div>
+  `,
   styles: `
 
     `,
@@ -99,14 +98,8 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class PlyerDetailsPage implements OnInit {
-
-
   ngOnInit() {
     console.log('PlayerDetailsPage');
   }
-  constructor(
-  ) {}
-
-
-
+  constructor() {}
 }

@@ -17,17 +17,12 @@ export const routes: Routes = [
   {
     path: 'playerdetails',
     loadComponent: () =>
-      import('./test/playerdetails').then((m) => m.PlayerDetailsPage),
+      import('./test/playerdetails').then((m) => m.PlyerDetailsPage),
   },
   {
     path: 'pokemon',
     loadComponent: () =>
       import('./pages/pokemon/pokemon.page').then((m) => m.PokemonPage),
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
   },
   {
     path: 'pokedetails',
@@ -38,14 +33,16 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+    loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
   },
   {
     path: 'test-css',
-    loadComponent: () => import('./test-css/test-css.page').then( m => m.TestCssPage)
+    loadComponent: () =>
+      import('./test-css/test-css.page').then((m) => m.TestCssPage),
   },
-
-
-
-
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
 ];
