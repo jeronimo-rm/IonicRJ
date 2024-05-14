@@ -27,9 +27,6 @@ import {
   inject,
 } from '@angular/core';
 import {
-  DomSanitizer
-} from '@angular/platform-browser';
-import {
   addIcons
 } from 'ionicons';
 import {
@@ -45,7 +42,7 @@ import {
         <ion-buttons slot="start">
           <ion-back-button />
         </ion-buttons>
-        <ion-title>10 Jogadores Mais Caros 2024</ion-title>
+        <ion-title>Top 10 Mais Caros</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -91,33 +88,118 @@ import {
         <ion-header>
           <ion-toolbar>
             <ion-icon slot="start" name="close" (click)="modalCtrl.dismiss()" />
+            <ion-title>Rodri Cascante</ion-title>
           </ion-toolbar>
         </ion-header>
 
         <ion-content>
           <swiper-container
             slides-per-view="1"
-            speed="500"
-            loop="true"
+            speed="300"
+            loop="false"
             css-mode="true"
-            navigation="true"
+            navigation="false"
             pagination="true"
-            scrollbar="true"
           >
-            <swiper-slide>
-              <img src="https://placehold.co/600x400"/>
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide1.png"/>
+              <ion-text> Rodri começou a sua carreira profissional no <a href="https://villarrealcf.es/" >Villarreal Club de Fútbol</a>, onde ficou 5 anos.
+              Rodri fez sua estreia no time principal em 17 de dezembro de 2015, começando com uma vitória em casa por 2-0 contra o <a href="https://www.sdhuesca.es/en">SD Huesca</a>
+              para a <a style="color: rgb(255, 255, 204);!important" href="https://www.laliga.com/en-GB/other-competitions/copa-del-rey">Copa del Rey</a>
+              daquela temporada. Sua primeira aparição na La Liga foi em 17 de abril de 2016, quando entrou como substituto no segundo tempo para
+              Denis Suárez, na derrota fora de casa por 2-1 contra o <a href="https://www.rayovallecano.es/">Rayo Vallecano</a>.
+            </ion-text>
             </swiper-slide>
 
-            <swiper-slide>
-              <img src="https://placehold.co/600x400"/>
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide2.png"/>
+              <ion-text>No dia 24 de maio de 2018, Rodri regressou ao <a href="https://en.atleticodemadrid.com/" >Atlético Madrid</a> depois de o clube ter
+              chegado a acordo com o <a href="https://villarrealcf.es/" >Villarreal</a> para a sua transferência.
+              Ele assinou um contrato de cinco anos com o clube, por uma taxa de cerca de 20 milhões de euros, mais 5 milhões de euros de objetivos.
+              Ele fez sua estreia em 15 de agosto na <a style="color: rgb(255, 255, 204);!important" href="https://www.uefa.com/uefasupercup/history/2018/">SuperTaça Europeia de 2018</a>, em Tallinn, jogando os primeiros 71 minutos de uma vitória por 4-2 na
+              prorrogação sobre o rival da cidade, o <a href="https://www.realmadrid.com/es-ES">Real Madrid</a>.
+                </ion-text>
             </swiper-slide>
 
-            <swiper-slide>
-              <img src="https://placehold.co/600x400"/>
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide3.png"/>
+              <ion-text>Em 3 de julho de 2019, o <a href="https://www.mancity.com/">Manchester City</a> cumpriu os termos da cláusula de rescisão de £62,6 milhões de Rodri(70M€),
+              permitindo-lhe comprar o restante de seu contrato com o <a href="https://en.atleticodemadrid.com/" >Atlético Madrid</a> e deixar o clube. A transferência foi uma nova taxa
+              recorde. Ele assinou um contrato de cinco anos.
+              No dia 10 de junho, ele marcou o único gol da final da <a style="color: rgb(255, 255, 204);!important" href="https://www.uefa.com/uefachampionsleague/history/seasons/2023/">Liga dos Campeões</a> contra o <a href="https://www.inter.it/en">Inter de Milão</a>,
+              garantindo a vitória do City pelo primeiro título da competição e completando a tripla continental.
+              Rodri foi eleito o melhor em campo e eleito o <a href="https://www.mancity.com/news/mens/rodrigo-uefa-champions-league-player-of-the-year-63822101">Jogador da Temporada do torneio.</a>
+            </ion-text>
             </swiper-slide>
 
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide4.png"/>
+              <ion-text>Depois de jogar pela <a href="https://rfef.es/es">Espanha</a> nas categorias sub-16, sub-19 e sub-21, Rodri foi convocado pela primeira vez pela seleção completa em 16 de março de 2018 para dois amistosos contra <a href="https://www.dfb.de/en/en-start/">Alemanha</a> e <a href="https://www.afa.com.ar/es/">Argentina</a>
+               Rodri foi incluído na seleção espanhola para a <a style="color: rgb(255, 255, 204);!important" href="https://www.fifa.com/fifaplus/pt/tournaments/mens/worldcup/qatar2022">Copa do Mundo FIFA de 2022</a>.
+               Rodri foi titular na final da <a style="color: rgb(255, 255, 204);!important" href="https://www.uefa.com/uefanationsleague/news/026e-1372acedf4a0-4cf2bf8d3c1b-1000--uefa-nations-league-roll-of-honour/">UEFA Nations League de 2023</a>, frente à <a href="https://hns.family/en/">Croácia</a>
+               depois de um empate sem gols, a Espanha venceu a partida nos pênaltis, com Rodri convertendo o pênalti. Ele foi eleito o <a href="https://www.uefa.com/uefanationsleague/news/0282-1849de0ccdfe-e28eb8d71909-1000--rodri-named-2023-uefa-nations-league-player-of-the-finals/">melhor jogador do torneio</a>.
+              </ion-text>
+            </swiper-slide>
 
           </swiper-container>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-modal
+      #modal2
+      id="open-modal2"
+      [breakpoints]="[0, 0.5, 0.9]"
+      initialBreakpoint="0.9"
+    >
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-icon slot="start" name="close" (click)="modalCtrl2.dismiss()" />
+            <ion-title>Florian Richard Wirtz</ion-title>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+        <swiper-container
+            slides-per-view="1"
+            speed="300"
+            loop="false"
+            css-mode="true"
+            navigation="false"
+            pagination="true"
+          >
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide1.png"/>
+              <ion-text> Rodri começou a sua carreira profissional no <a href="https://villarrealcf.es/" >Villarreal Club de Fútbol</a>, onde ficou 5 anos.
+              Rodri fez sua estreia no time principal em 17 de dezembro de 2015, começando com uma vitória em casa por 2-0 contra o <a href="https://www.sdhuesca.es/en">SD Huesca</a>
+              para a <a style="color: rgb(255, 255, 204);!important" href="https://www.laliga.com/en-GB/other-competitions/copa-del-rey">Copa del Rey</a>
+              daquela temporada. Sua primeira aparição na La Liga foi em 17 de abril de 2016, quando entrou como substituto no segundo tempo para
+              Denis Suárez, na derrota fora de casa por 2-1 contra o <a href="https://www.rayovallecano.es/">Rayo Vallecano</a>.
+            </ion-text>
+            </swiper-slide>
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide3.png"/>
+              <ion-text>Em 3 de julho de 2019, o <a href="https://www.mancity.com/">Manchester City</a> cumpriu os termos da cláusula de rescisão de £62,6 milhões de Rodri(70M€),
+              permitindo-lhe comprar o restante de seu contrato com o <a href="https://en.atleticodemadrid.com/" >Atlético Madrid</a> e deixar o clube. A transferência foi uma nova taxa
+              recorde. Ele assinou um contrato de cinco anos.
+              No dia 10 de junho, ele marcou o único gol da final da <a style="color: rgb(255, 255, 204);!important" href="https://www.uefa.com/uefachampionsleague/history/seasons/2023/">Liga dos Campeões</a> contra o <a href="https://www.inter.it/en">Inter de Milão</a>,
+              garantindo a vitória do City pelo primeiro título da competição e completando a tripla continental.
+              Rodri foi eleito o melhor em campo e eleito o <a href="https://www.mancity.com/news/mens/rodrigo-uefa-champions-league-player-of-the-year-63822101">Jogador da Temporada do torneio.</a>
+            </ion-text>
+            </swiper-slide>
+
+            <swiper-slide class="sld-pd">
+              <img class="crn-rdd" src="assets/slides/rodri-slide4.png"/>
+              <ion-text>Depois de jogar pela <a href="https://rfef.es/es">Espanha</a> nas categorias sub-16, sub-19 e sub-21, Rodri foi convocado pela primeira vez pela seleção completa em 16 de março de 2018 para dois amistosos contra <a href="https://www.dfb.de/en/en-start/">Alemanha</a> e <a href="https://www.afa.com.ar/es/">Argentina</a>
+               Rodri foi incluído na seleção espanhola para a <a style="color: rgb(255, 255, 204);!important" href="https://www.fifa.com/fifaplus/pt/tournaments/mens/worldcup/qatar2022">Copa do Mundo FIFA de 2022</a>.
+               Rodri foi titular na final da <a style="color: rgb(255, 255, 204);!important" href="https://www.uefa.com/uefanationsleague/news/026e-1372acedf4a0-4cf2bf8d3c1b-1000--uefa-nations-league-roll-of-honour/">UEFA Nations League de 2023</a>, frente à <a href="https://hns.family/en/">Croácia</a>
+               depois de um empate sem gols, a Espanha venceu a partida nos pênaltis, com Rodri convertendo o pênalti. Ele foi eleito o <a href="https://www.uefa.com/uefanationsleague/news/0282-1849de0ccdfe-e28eb8d71909-1000--rodri-named-2023-uefa-nations-league-player-of-the-finals/">melhor jogador do torneio</a>.
+              </ion-text>
+            </swiper-slide>
+
+          </swiper-container>
+
         </ion-content>
       </ng-template>
     </ion-modal>
@@ -136,6 +218,21 @@ import {
         border-radius: 5px;
         margin-right: 20px;
       }
+      .crn-rdd{
+        padding: 10px;
+        border-radius: 20px;
+      }
+      swiper-slide ion-text{
+        line-height: 125%;
+        padding: 0px 20px;
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      swiper-slide ion-text a{
+        color: #FFFFFF;
+      }
+
     `,
 
   imports: [
@@ -246,6 +343,7 @@ export class ExpensivePage implements OnInit {
   ];
 
   modalCtrl = inject(ModalController);
+  modalCtrl2 = inject(ModalController);
 
   ngOnInit() {
     console.log('ExpensivePage');
