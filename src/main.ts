@@ -16,6 +16,10 @@ import { environment } from './environments/environment';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './app/interceptor/interceptor';
 
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
+
 if (environment.production) {
   enableProdMode();
 }

@@ -21,14 +21,14 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import {
+  CUSTOM_ELEMENTS_SCHEMA,
   Component,
   OnInit,
-  inject
+  inject,
 } from '@angular/core';
 import {
   DomSanitizer
 } from '@angular/platform-browser';
-
 import {
   addIcons
 } from 'ionicons';
@@ -55,10 +55,7 @@ import {
         <ion-row>
           <ion-col size="12" size-md="6" size-lg="4">
             <ion-card button id="open-modal">
-              <img
-                [src]="topic.imageUrl"
-                alt="Imagem Jogadores"
-              />
+              <img [src]="topic.imageUrl" alt="Imagem Jogadores" />
               <ion-card-header>
                 <ion-card-title
                   >{{ topic.title }}
@@ -84,19 +81,43 @@ import {
       </ion-grid>
     </ion-content>
 
-
-    <ion-modal #modal trigger="open-modal" [breakpoints]="[0, 0.5, 0.9]" initialBreakpoint="0.9">
+    <ion-modal
+      #modal
+      trigger="open-modal"
+      [breakpoints]="[0, 0.5, 0.9]"
+      initialBreakpoint="0.9"
+    >
       <ng-template>
         <ion-header>
           <ion-toolbar>
-           <ion-icon slot="start" name="close" (click)="modalCtrl.dismiss()"/>
+            <ion-icon slot="start" name="close" (click)="modalCtrl.dismiss()" />
           </ion-toolbar>
         </ion-header>
 
         <ion-content>
+          <swiper-container
+            slides-per-view="1"
+            speed="500"
+            loop="true"
+            css-mode="true"
+            navigation="true"
+            pagination="true"
+            scrollbar="true"
+          >
+            <swiper-slide>
+              <img src="https://placehold.co/600x400"/>
+            </swiper-slide>
+
+            <swiper-slide>
+              <img src="https://placehold.co/600x400"/>
+            </swiper-slide>
+
+            <swiper-slide>
+              <img src="https://placehold.co/600x400"/>
+            </swiper-slide>
 
 
-
+          </swiper-container>
         </ion-content>
       </ng-template>
     </ion-modal>
@@ -136,8 +157,9 @@ import {
     IonList,
     IonImg,
     IonModal,
-    IonIcon
+    IonIcon,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ExpensivePage implements OnInit {
   topics = [{
@@ -228,14 +250,9 @@ export class ExpensivePage implements OnInit {
   ngOnInit() {
     console.log('ExpensivePage');
   }
-  constructor(
-    private sanitizer: DomSanitizer,
-  ) {
+  constructor() {
     addIcons({
-      close
+      close,
     });
   }
-
-
-
 }
