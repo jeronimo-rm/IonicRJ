@@ -61,19 +61,19 @@ import {
 
           <!-- nova syntax do angular  -->
           @switch (item.type.name) { @case ('flame') {
-          <ion-icon class="icn1" name="flame" />
+            <ion-icon class="icn1" name="flame" />
           } @case ('water') {
-          <ion-icon class="icn2" name="water" />
+            <ion-icon class="icn2" name="water" />
           } @case ('grass') {
-          <ion-icon class="icn3" name="leaf" />
+            <ion-icon class="icn3" name="leaf" />
           } @case ('bug') {
-          <ion-icon class="icn4" name="bug" />
+            <ion-icon class="icn4" name="bug" />
           } @case ('flying') {
-          <ion-icon class="icn5" name="logo-firefox" />
+            <ion-icon class="icn5" name="logo-firefox" />
           } @case ('normal') {
-          <ion-icon class="icn6" name="aperture" />
+            <ion-icon class="icn6" name="aperture" />
           }@case ('poison') {
-          <ion-icon class="icn7" name="skull" />
+            <ion-icon class="icn7" name="skull" />
           } @default { } }
 
           <!-- <ion-icon class="icn1" name="flame"></ion-icon>

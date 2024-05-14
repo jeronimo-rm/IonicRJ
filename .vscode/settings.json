@@ -2,7 +2,5 @@
   "typescript.preferences.autoImportFileExcludePatterns": [
     "@ionic/angular/common",
     "@ionic/angular"
-  ],
-  "js-beautify-for-vscode.html.templating": ["angular"],
-  "html.format.indentHandlebars": true
+  ]
 }
