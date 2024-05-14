@@ -15,7 +15,6 @@ import {
 } from '@ionic/angular/standalone';
 import { ButtonComponent } from '../components/button/button.component';
 import { Router } from '@angular/router';
-import { RefresherEventDetail } from '@ionic/core';
 import { PlayersService } from '../services/players.service';
 
 @Component({
@@ -97,6 +96,7 @@ export class HomePage implements OnInit {
   objectTest = [
     { id: 0, value: '10 Jogadores Mais Caros 2024', page: 'expensive' },
     { id: 1, value: 'Pokemons', page: 'pokemon' },
+    { id: 2, value: 'TESTES DE CSS', page: 'test-css' },
   ];
 
   listChampionsShip = signal<any | undefined>(undefined);

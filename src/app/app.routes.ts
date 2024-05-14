@@ -15,6 +15,11 @@ export const routes: Routes = [
       import('./test/expensive').then((m) => m.ExpensivePage),
   },
   {
+    path: 'playerdetails',
+    loadComponent: () =>
+      import('./test/playerdetails').then((m) => m.PlayerDetailsPage),
+  },
+  {
     path: 'pokemon',
     loadComponent: () =>
       import('./pages/pokemon/pokemon.page').then((m) => m.PokemonPage),
@@ -31,4 +36,16 @@ export const routes: Routes = [
         (m) => m.PokedetailsPage
       ),
   },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+  },
+  {
+    path: 'test-css',
+    loadComponent: () => import('./test-css/test-css.page').then( m => m.TestCssPage)
+  },
+
+
+
+
 ];
