@@ -258,6 +258,6 @@ export class LoginPage {
   router = inject(Router)
 
   login() {
-    return this.router.navigateByUrl('./home');
+    return this.router.navigateByUrl('/home');
   }
 }
