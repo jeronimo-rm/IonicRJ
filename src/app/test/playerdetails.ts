@@ -12,14 +12,16 @@ import {
   IonAvatar,
   IonLabel,
 } from '@ionic/angular/standalone';
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-expensive',
   standalone: true,
   template: `
-    <div class="ion-page">
-      <ion-header>
+    <ion-header>
         <ion-toolbar>
           <ion-title>App</ion-title>
         </ion-toolbar>
@@ -27,60 +29,7 @@ import { Component, OnInit } from '@angular/core';
       <ion-content class="ion-padding">
         <ion-button id="open-modal" expand="block">Open Card Modal</ion-button>
 
-        <!-- <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Modal</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="modal.dismiss()">Close</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <ion-list>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Connor Smith</h2>
-                <p>Sales Rep</p>
-              </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Daniel Smith</h2>
-                <p>Product Designer</p>
-              </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Greg Smith</h2>
-                <p>Director of Operations</p>
-              </ion-label>
-            </ion-item>
-            <ion-item>
-              <ion-avatar slot="start">
-                <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
-              </ion-avatar>
-              <ion-label>
-                <h2>Zoey Smith</h2>
-                <p>CEO</p>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-content>
-      </ng-template>
-    </ion-modal> -->
       </ion-content>
-    </div>
   `,
   styles: `
 
@@ -95,6 +44,10 @@ import { Component, OnInit } from '@angular/core';
     IonContent,
     IonButton,
     IonModal,
+    IonList,
+    IonImg,
+    IonAvatar,
+    IonLabel,
   ],
 })
 export class PlyerDetailsPage implements OnInit {
