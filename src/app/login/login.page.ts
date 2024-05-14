@@ -24,7 +24,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonButt
       <ion-input class="input" type="password" name="password" [(ngModel)]="password" required></ion-input>
     </ion-item>
 
-    <ion-button class="main-btn" type="submit" href="./home" [disabled]="!loginForm.valid">
+    <ion-button class="main-btn" type="submit" href="./home">
       <a>
         <span></span>
         <span></span>
@@ -92,15 +92,6 @@ ion-content {
   padding: 10px;
 }
 
-.login-box a:hover {
-  background: #03e9f4;
-  color: #FFFFFF;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 25px #03e9f4,
-              0 0 50px #03e9f4,
-              0 0 100px #03e9f4;
-}
 
 .login-box a span {
   position: absolute;
