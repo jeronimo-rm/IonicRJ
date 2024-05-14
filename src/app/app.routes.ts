@@ -15,6 +15,11 @@ export const routes: Routes = [
       import('./test/expensive').then((m) => m.ExpensivePage),
   },
   {
+    path: 'playerdetails',
+    loadComponent: () =>
+      import('./test/playerdetails').then((m) => m.PlayerDetailsPage),
+  },
+  {
     path: 'pokemon',
     loadComponent: () =>
       import('./pages/pokemon/pokemon.page').then((m) => m.PokemonPage),
