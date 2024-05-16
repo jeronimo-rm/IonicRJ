@@ -95,7 +95,7 @@ import {
         <ion-content>
           <swiper-container
             slides-per-view="1"
-            speed="300"
+            speed="100"
             loop="false"
             css-mode="true"
             navigation="false"

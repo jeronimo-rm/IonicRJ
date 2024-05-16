@@ -39,7 +39,7 @@ import { Location } from '@angular/common';
     <ion-header>
       <ion-toolbar>
         <img
-          src="assets/img/pokemon-logo.png"
+          src="assets/img/pokelogo.png"
           alt="Pokemon"
           style="width: 160px; display: block; margin: 0 auto;"
         />
