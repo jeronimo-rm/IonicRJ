@@ -1,0 +1,9 @@
+Ion-grid {
+  display: grid;
+  gap: 20px;
+  padding: 10px;
+}
+
+::ng-deep a {
+  color: rgb(255, 255, 204);
+}

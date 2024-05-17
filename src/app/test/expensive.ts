@@ -284,6 +284,44 @@ export class ExpensivePage implements OnInit {
       description:
         'Rodrigo Hernández Cascante é jogador do Manchester City  27(22/06/1996) Médio Defensivo',
       icnflag: 'assets/icon/spain.png',
+      slides: [
+        {
+          imagem: 'assets/slides/rodri-slide1.png',
+          text: `Rodri começou a sua carreira profissional no
+      <a href="https://villarrealcf.es/">Villarreal Club de Fútbol</a>, onde ficou 5 anos. Rodri fez sua
+      estreia no time
+      principal em 17 de dezembro de 2015, começando com uma
+      vitória em casa por 2-0 contra o
+      <a href="https://www.sdhuesca.es/en">SD Huesca</a> para a
+      <a [ngStyle]="{'color: rgb(255, 255, 204) !important': true}"
+        href="https://www.laliga.com/en-GB/other-competitions/copa-del-rey">Copa del Rey</a>
+      daquela temporada. Sua primeira aparição na La Liga foi em
+      17 de abril de 2016, quando entrou como substituto no
+      segundo tempo para Denis Suárez, na derrota fora de casa por
+      2-1 contra o
+      <a href="https://www.rayovallecano.es/">Rayo Vallecano</a>.`,
+        },
+        {
+          imagem: 'assets/slides/rodri-slide2.png',
+          text: `No dia 24 de maio de 2018, Rodri regressou ao
+          <a href="https://en.atleticodemadrid.com/"
+            >Atlético Madrid</a
+          >
+          depois de o clube ter chegado a acordo com o
+          <a href="https://villarrealcf.es/">Villarreal</a> para a sua
+          transferência. Ele assinou um contrato de cinco anos com o
+          clube, por uma taxa de cerca de 20 milhões de euros, mais 5
+          milhões de euros de objetivos. Ele fez sua estreia em 15 de
+          agosto na
+          <a
+            style="color: rgb(255, 255, 204);!important"
+            href="https://www.uefa.com/uefasupercup/history/2018/"
+            >SuperTaça Europeia de 2018</a
+          >, em Tallinn, jogando os primeiros 71 minutos de uma
+          vitória por 4-2 na prorrogação sobre o rival da cidade, o
+          <a href="https://www.realmadrid.com/es-ES">Real Madrid</a>.`,
+        },
+      ],
     },
     {
       id: 2,
@@ -293,6 +331,7 @@ export class ExpensivePage implements OnInit {
       description:
         'Florian Richard Wirtz é jogador do Bayern Leverkusen 21(03/05/2003) Médio Ofensivo',
       icnflag: 'assets/icon/germany.png',
+      slides: [],
     },
     {
       id: 3,
@@ -390,6 +429,7 @@ export class ExpensivePage implements OnInit {
     modal.present();
 
     const { data, role } = await modal.onWillDismiss();
+    console.log(`MSA 🔊 data:`, data);
 
     if (role === 'confirm') {
     }

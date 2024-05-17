@@ -1,12 +1,4 @@
-import { Ability } from './../../interfaces/pokemon';
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  inject,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, OnInit, inject, signal, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -31,7 +23,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { chevronBackOutline } from 'ionicons/icons';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon',
@@ -45,21 +36,23 @@ import { Location } from '@angular/common';
         />
       </ion-toolbar>
 
-      <!-- Metodo 1 para passar valor do search bar para a função search -->
-      <!-- <ion-searchbar
+      <ion-toolbar class="no-background">
+        <!-- Metodo 1 para passar valor do search bar para a função search -->
+        <!-- <ion-searchbar
         #searchBar
         animated="true"
         placeholder="search"
         (ionInput)="search(searchBar.value)"
       /> -->
 
-      <!-- metodo 2 utilizando viewchield -->
-      <ion-searchbar
-        #searchBar
-        animated="true"
-        placeholder="search"
-        (ionInput)="search2()"
-      />
+        <!-- metodo 2 utilizando viewchield -->
+        <ion-searchbar
+          #searchBar
+          animated="true"
+          placeholder="search"
+          (ionInput)="search2()"
+        />
+      </ion-toolbar>
     </ion-header>
 
     <ion-content>
@@ -87,6 +80,11 @@ import { Location } from '@angular/common';
       ion-toolbar {
         --background: url('/assets/img/poke-img.png') no-repeat center center fixed;
         background-size: cover;
+      }
+
+      ion-toolbar.no-background {
+        padding-top:20px;
+        --background: none;
       }
 
       ion-header {
@@ -140,7 +138,7 @@ export class PokemonPage implements OnInit {
   private pokemonService = inject(PokemonService);
   private router = inject(Router);
 
-  constructor(private location: Location) {
+  constructor() {
     addIcons({
       chevronBackOutline,
     });
