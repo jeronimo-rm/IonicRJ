@@ -16,9 +16,15 @@ import { environment } from './environments/environment';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './app/interceptor/interceptor';
 
+// register Swiper custom elements para que se consiga utilizar o swipper js
 import { register } from 'swiper/element/bundle';
-// register Swiper custom elements
 register();
+
+// registar o locate pt para se conseguir ter o projeto com a linguagem pretendida
+// exemplo pode-mos usar o date com o formato Português
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt-PT';
+registerLocaleData(localePT, 'pt');
 
 if (environment.production) {
   enableProdMode();

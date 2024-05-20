@@ -12,10 +12,17 @@ import {
   IonText,
   IonRefresher,
   IonRefresherContent,
+  IonTabs,
+  IonTabBar,
+  IonTabButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { ButtonComponent } from '../components/button/button.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PlayersService } from '../services/players.service';
+import { DatePipe } from '@angular/common';
+import { addIcons } from 'ionicons';
+import { playCircle, radio, search, library } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -23,14 +30,20 @@ import { PlayersService } from '../services/players.service';
     <ion-header>
       <ion-toolbar>
         <img src="/assets/img/foto-foot.png" alt="foot" />
-        <ion-title class="ion-text-center ion-align-items-center">Game News</ion-title>
+        <ion-title class="ion-text-center ion-align-items-center"
+          >Game News</ion-title
+        >
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <ion-grid>
-      <ion-text class="mdtext">Latest News</ion-text>
+        <ion-text class="">Latest News</ion-text>
+        <ion-text class="">
+          {{ date() | date : 'medium' : '' : 'pt' }}
+        </ion-text>
       </ion-grid>
+
       <!-- <ion-grid>
         <app-button
           [buttonTitle]="'Test'"
@@ -71,6 +84,27 @@ import { PlayersService } from '../services/players.service';
         </ion-item>
         }
       </ion-list>
+
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button (click)="goTo('login')">
+            <ion-icon name="play-circle" />
+            Listen Now
+          </ion-tab-button>
+          <ion-tab-button [routerLink]="['/pokemon']">
+            <ion-icon name="radio" />
+            Radio
+          </ion-tab-button>
+          <ion-tab-button>
+            <ion-icon name="library" />
+            Library
+          </ion-tab-button>
+          <ion-tab-button>
+            <ion-icon name="search" />
+            Search
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
     </ion-content>
   `,
   styleUrls: ['home.page.scss'],
@@ -90,6 +124,12 @@ import { PlayersService } from '../services/players.service';
     IonText,
     IonRefresher,
     IonRefresherContent,
+    DatePipe,
+    IonTabs,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    RouterLink,
   ],
 })
 export class HomePage implements OnInit {
@@ -102,7 +142,17 @@ export class HomePage implements OnInit {
   listChampionsShip = signal<any | undefined>(undefined);
   router = inject(Router);
   playersService = inject(PlayersService);
-  constructor() {}
+
+  date = signal<Date>(new Date());
+
+  constructor() {
+    addIcons({
+      playCircle,
+      radio,
+      search,
+      library,
+    });
+  }
 
   ngOnInit(): void {
     this.getListChampionsShip();
@@ -124,5 +174,4 @@ export class HomePage implements OnInit {
   goToChampionShip(championShipId: number) {
     return this.router.navigateByUrl(`test/${championShipId}`);
   }
-
 }
